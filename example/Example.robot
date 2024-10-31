@@ -9,5 +9,4 @@ First Run
     [Teardown]    Teardown Process Engine
     Deploy Resources    ${CURDIR}${/}process.bpmn
     ${instance}=    Start Instance    my-project-process
-    ${task}=    Should Have Task    ${instance}    say-hello
-    Log  ${task}
+    Should Have Task    ${instance}    say-hello
