@@ -34,25 +34,35 @@ def except_interop_exception(func):
     return wrapper
 
 
-
 @library(scope="GLOBAL")
 class ProcessEngine:
+    ROBOT_LISTENER_API_VERSION = 2
+
     engine: Any = None
 
-    @keyword
+    def __init__(self) -> None:
+        self.ROBOT_LIBRARY_LISTENER = self
+        self.engine: Any = None
+
     @except_interop_exception
-    def setup_process_engine(self) -> Any:
+    def start_suite(self, name, attributes):
         if self.engine is None:
             self.engine = (
                 ProcessEngineConfiguration.createStandaloneInMemProcessEngineConfiguration().buildProcessEngine()
             )
-        return self.engine
 
-    @keyword
     @except_interop_exception
-    def teardown_process_engine(self):
-        self.engine.close()
-        self.engine = None
+    def end_test(self, name, attributes):
+        # fetch repository service
+        # iterate all deployment
+        # clear them
+        pass
+     
+    @except_interop_exception
+    def close(self):
+        if self.engine is not None:
+            self.engine.close()
+            self.engine = None
 
     @keyword
     @except_interop_exception
