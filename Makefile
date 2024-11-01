@@ -15,7 +15,7 @@ src/main/resources/META-INF/native-image/org.operaton.bpm.extension.robot/operat
 	mvn exec:exec -Dexec.executable="$(JAVA)" -Dexec.args="-agentlib:native-image-agent=config-output-dir=$(PWD)/src/main/resources/META-INF/native-image/org.operaton.bpm.extension.robot/operaton-bpm-extension-robot -cp %classpath org.operaton.bpm.extension.robot.Robot $(PWD)/example"
 
 trace-output.json:
-	mvn exec:exec -Dexec.executable="$(JAVA)" -Dexec.args="-agentlib:native-image-agent=trace-output=$(PWD)/trace-file.json -cp %classpath org.operaton.bpm.extension.robot.Robot $(PWD)/collect"
+	mvn exec:exec -Dexec.executable="$(JAVA)" -Dexec.args="-agentlib:native-image-agent=trace-output=$(PWD)/trace-file.json -cp %classpath org.operaton.bpm.extension.robot.Robot $(PWD)/example"
 
 .PHONY: clean
 clean:

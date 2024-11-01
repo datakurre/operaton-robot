@@ -38,11 +38,14 @@
             (final: prev: {
               gitignoreSource = inputs.gitignore.lib.gitignoreSource;
               inherit (pkgs-unstable)
+                graalvm-ce
+                graalvmCEPackages
+                maven
                 ruff
-                vscode-with-extensions
-                vscode-extensions
-                vscodium
                 vscode
+                vscode-extensions
+                vscode-with-extensions
+                vscodium
                 ;
               inherit (inputs.nix-vscode-extensions.extensions.${system})
                 vscode-marketplace
